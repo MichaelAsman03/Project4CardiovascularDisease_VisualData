@@ -12,4 +12,15 @@ except:
     print("2. It's in a folder called 'data'")
     exit()
 
-    
+    # Step 2
+clean_data = data.dropna(subset=['Data_Value'])
+
+clean_data = clean_data.rename(columns={
+    'Stratification1': 'Age_Group',
+    'Stratification2': 'Race',
+    'Stratification3': 'Sex'
+})
+
+print(f"Working with {len(clean_data)} rows after cleaning")
+
+
