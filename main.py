@@ -24,3 +24,18 @@ clean_data = clean_data.rename(columns={
 print(f"Working with {len(clean_data)} rows after cleaning")
 
 
+# Step 3
+import os
+if not os.path.exists('screenshots'):
+    os.makedirs('screenshots')
+
+# Graph 1: Bar chart of Mortality by Age Group
+plt.figure(figsize=(10, 5))  
+plt.bar(clean_data['Age_Group'], clean_data['Data_Value'])
+plt.title("Mortality Rate by Age Group")
+plt.xlabel("Age Group")
+plt.ylabel("Mortality Rate")
+plt.xticks(rotation=45) 
+plt.tight_layout()  
+plt.savefig("screenshots/age_group_bar.png")
+plt.close()
