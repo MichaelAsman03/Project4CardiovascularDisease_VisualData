@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # Step 1
 try:
-    data = pd.read_csv("data/hypertension_cvd_mortality.csv", nrows=20)
+    data = pd.read_csv("data/Rates_and_Trends_ in_Heart_Disease _and_Stroke_Mortality_Among_US_Adults_35_by_County_Age_Group_Race_Ethnicity_and_Sex_2000-2019.csv", nrows=20)
     print("Successfully loaded 20 rows of data")
 except:
     print("Error: Could not load the CSV file")
@@ -64,8 +64,3 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.savefig("screenshots/race_boxplot.png")
 plt.close()
-
-print("Done! Created 3 graphs in the screenshots folder:")
-print("- age_group_bar.png")
-print("- trend_by_sex.png")
-print("- race_boxplot.png")
