@@ -64,3 +64,8 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.savefig("screenshots/race_boxplot.png")
 plt.close()
+
+print("Done! Created 3 graphs in the screenshots folder:")
+print("- age_group_bar.png")
+print("- trend_by_sex.png")
+print("- race_boxplot.png")
