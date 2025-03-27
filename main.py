@@ -29,7 +29,7 @@ import os
 if not os.path.exists('screenshots'):
     os.makedirs('screenshots')
 
-# Graph 1: Bar chart of Mortality by Age Group
+# Graph 1
 plt.figure(figsize=(10, 5))  
 plt.bar(clean_data['Age_Group'], clean_data['Data_Value'])
 plt.title("Mortality Rate by Age Group")
@@ -38,4 +38,29 @@ plt.ylabel("Mortality Rate")
 plt.xticks(rotation=45) 
 plt.tight_layout()  
 plt.savefig("screenshots/age_group_bar.png")
+plt.close()
+
+# Graph 2: Line chart of Mortality Over Time by Sex
+plt.figure(figsize=(10, 5))
+for sex in clean_data['Sex'].unique():
+    sex_data = clean_data[clean_data['Sex'] == sex]
+    plt.plot(sex_data['Year'], sex_data['Data_Value'], label=sex, marker='o')
+plt.title("Mortality Trend by Sex")
+plt.xlabel("Year")
+plt.ylabel("Mortality Rate")
+plt.legend()  # Show legend
+plt.savefig("screenshots/trend_by_sex.png")
+plt.close()
+
+# Graph 3: Box plot of Mortality by Race
+plt.figure(figsize=(12, 6))
+plt.boxplot([clean_data[clean_data['Race'] == race]['Data_Value'] 
+             for race in clean_data['Race'].unique()],
+            labels=clean_data['Race'].unique())
+plt.title("Mortality Rate by Race")
+plt.xlabel("Race")
+plt.ylabel("Mortality Rate")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig("screenshots/race_boxplot.png")
 plt.close()
