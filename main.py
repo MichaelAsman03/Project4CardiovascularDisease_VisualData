@@ -2,9 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Configuration
+
 FILENAME = 'Rates_and_Trends_in_Heart_Disease_and_Stroke_Mortality_Among_US_Adults__35___by_County__Age_Group__Race_Ethnicity__and_Sex___2000-2019.csv'
-SAMPLE_ROWS = 500  # Increased sample size
+SAMPLE_ROWS = 500  
 os.makedirs('screenshots', exist_ok=True)
 
 def load_data():
@@ -46,10 +46,10 @@ def create_visualizations(data):
     
     print("\nGenerating visualizations...")
     
-    # Use built-in style
-    plt.style.use('ggplot')  # Alternative professional style
+  
+    plt.style.use('ggplot') 
     
-    # Plot 1: Time Trend of Mortality Rates
+    
     plt.figure(figsize=(12, 6))
     if 'Year' in data.columns:
         yearly_data = data.groupby('Year')['Data_Value'].mean()
@@ -66,7 +66,7 @@ def create_visualizations(data):
         plt.close()
         print("- Created mortality trend line plot")
     
-    # Plot 2: Age Group Distribution
+    
     plt.figure(figsize=(10, 6))
     if 'Age_Group' in data.columns:
         age_dist = data['Age_Group'].value_counts().sort_index()
@@ -78,7 +78,7 @@ def create_visualizations(data):
         plt.ylabel("Number of Cases", fontsize=12)
         plt.xticks(rotation=45)
         
-        # Add value labels
+       
         for bar in bars:
             height = bar.get_height()
             plt.text(bar.get_x() + bar.get_width()/2., height,
@@ -90,10 +90,10 @@ def create_visualizations(data):
         plt.close()
         print("- Created age group distribution plot")
     
-    # Plot 3: Race/Ethnicity Comparison
+   
     plt.figure(figsize=(12, 6))
     if 'Race' in data.columns:
-        # Filter for races with sufficient data
+   
         race_counts = data['Race'].value_counts()
         valid_races = race_counts[race_counts >= 5].index
         
